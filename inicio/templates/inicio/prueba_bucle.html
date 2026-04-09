@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Prueba Bucle
+{% endblock head_title %}
+
+{% block contenido %}
+
+{{datos}}
+
+<ul>
+    {% for dato in datos %}
+        {% if dato|divisibleby:2 %}
+        <li>{{dato}}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+{% endblock contenido %}
+
