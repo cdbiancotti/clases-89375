@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Actualizar Jabon Líquido
+{% endblock head_title %}
+
+{% block contenido %}
+<h1>Actualizar Jabon Líquido</h1>
+
+<form action="{% url "productos:actualizar_jabon_liquido" jabonliquido.id %}" method='POST'>
+    {% csrf_token %}
+
+    {{form}}
+
+    <input type="submit" value='Actualizar'>
+</form>
+
+{% endblock contenido %}

@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Listado de Jabon Líquido
+{% endblock head_title %}
+
+{% block contenido %}
+<h1>Listado de Jabon Líquido</h1>
+
+<a href="{% url "productos:crear_jabon_liquido" %}">Crear Jabon Líquido</a>
+
+<ul>
+    {% for producto in productos %}
+    <li>{{ producto.marca }} - {{ producto.descripcion }}
+    | <a href="{% url "productos:detalle_jabon_liquido" producto.id %}">Detalle</a>
+    | <a href="{% url "productos:actualizar_jabon_liquido" producto.id %}">Actualizar</a>
+    | <a href="{% url "productos:borrar_jabon_liquido" producto.id %}">Borrar</a>
+
+    </li>
+    {% endfor %}
+</ul>
+{% endblock contenido %}

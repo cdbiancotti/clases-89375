@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Crear Jabon Líquido
+{% endblock head_title %}
+
+{% block contenido %}
+<h1>Crear Jabon Líquido</h1>
+
+<form action="{% url "productos:crear_jabon_liquido" %}" method='POST'>
+    {% csrf_token %}
+
+    {{formulario}}
+
+    <input type="submit">
+</form>
+
+{% endblock contenido %}

@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Jabon Líquido
+{% endblock head_title %}
+
+{% block contenido %}
+<h1>Jabon Líquido</h1>
+
+<ul>
+    <li>Marca: {{ producto.marca }}</li>
+    <li>Descripción: {{ producto.descripcion }}</li>
+    <li>Fecha: {{ producto.fecha }}</li>
+</ul>
+{% endblock contenido %}

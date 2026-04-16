@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block head_title %}
+Borrar Jabon Líquido
+{% endblock head_title %}
+
+{% block contenido %}
+<h1>Borrar Jabon Líquido</h1>
+
+<form action="{% url "productos:borrar_jabon_liquido" jabonliquido.id%}" method='POST'>
+    {% csrf_token %}
+    <p>Esta seguro que quiere borrar el elemento {{ jabonliquido }}?</p>
+    <input type="submit" value='Confirmar'>
+</form>
+
+{% endblock contenido %}
