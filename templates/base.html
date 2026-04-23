@@ -16,6 +16,18 @@
             <li><a href="{% url 'inicio:inicio' %}">Inicio</a></li>
             <li><a href="{% url 'inicio:prueba_bucle' %}">Prueba Bucle</a></li>
             <li><a href="{% url 'productos:listado_jabon_liquido' %}">Listado de Jabon Líquido</a></li>
+
+            {% if request.user.is_authenticated %}
+            <li><a href="{% url "usuarios:perfil" %}">{{request.user.username}}</a></li>
+            <form action="{% url "usuarios:cerrar_sesion" %}" method='POST'>
+                {% csrf_token %}
+                <input type="submit" value='Cerrar Sesion'>
+            </form>
+            {% else %}
+            <li><a href="{% url 'usuarios:iniciar_sesion' %}">Iniciar Sesion</a></li>
+            <li><a href="{% url 'usuarios:registro' %}">Registrarse</a></li>
+            {% endif %}
+
         </ul>
     </nav>
 

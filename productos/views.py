@@ -3,6 +3,9 @@ from productos.models import JabonLiquido
 from productos.forms import FormularioCreacionJabonLiquido, FormularioCreacionJabonLiquidoCBV
 from django.views.generic.edit import DeleteView, UpdateView
 from django.urls import reverse_lazy
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 def listado(request):
     
@@ -10,6 +13,7 @@ def listado(request):
     
     return render(request, 'productos/listado.html', {'productos': productos})
 
+@login_required
 def crear_jabon_liquido(request):
     
     # print('POST: ', request.POST)
@@ -33,12 +37,12 @@ def detalle_jabon_liquido(request, clave_primaria):
     
     return render(request, 'productos/detalle.html', {'producto': jabon_liquido})
 
-class BorrarJabonLiquido(DeleteView):
+class BorrarJabonLiquido(LoginRequiredMixin, DeleteView):
     model = JabonLiquido
     template_name = "productos/borrado.html"
     success_url = reverse_lazy('productos:listado_jabon_liquido')
 
-class ActualizarJabonLiquido(UpdateView):
+class ActualizarJabonLiquido(LoginRequiredMixin, UpdateView):
     model = JabonLiquido
     template_name = "productos/actualizar.html"
     success_url = reverse_lazy('productos:listado_jabon_liquido')
